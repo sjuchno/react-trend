@@ -42,6 +42,7 @@ const defaultProps = {
   autoDraw: false,
   autoDrawDuration: 2000,
   autoDrawEasing: 'ease',
+  data: [10, 30, 6, 40, 12, 52, 5],
 };
 
 class Trend extends Component {
