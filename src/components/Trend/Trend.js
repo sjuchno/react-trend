@@ -24,11 +24,14 @@ const propTypes = {
   autoDraw: PropTypes.bool,
   autoDrawDuration: PropTypes.number,
   autoDrawEasing: PropTypes.string,
+  /** @uxpinignoreprop */
   width: PropTypes.number,
+  /** @uxpinignoreprop */
   height: PropTypes.number,
   padding: PropTypes.number,
   radius: PropTypes.number,
   gradient: PropTypes.arrayOf(PropTypes.string),
+  strokeWidth: PropTypes.number,
 };
 
 const defaultProps = {
@@ -70,7 +73,7 @@ class Trend extends Component {
   }
 
   getDelegatedProps() {
-    return omit(this.props, Object.keys(propTypes));
+    return omit(this.props, Object.keys(propTypes).filter(propType => propType !== 'strokeWidth'));
   }
 
   renderGradientDefinition() {
@@ -137,8 +140,10 @@ class Trend extends Component {
     // container, preserving a 1/4 aspect ratio.
     const viewBoxWidth = width || 300;
     const viewBoxHeight = height || 75;
-    const svgWidth = width || '100%';
-    const svgHeight = height || '25%';
+    // const svgWidth = width || '100%';
+    // const svgHeight = height || '25%';
+    const svgWidth = '100%';
+    const svgHeight = '100%';
 
     const normalizedValues = normalizeDataset(plainValues, {
       minX: padding,
